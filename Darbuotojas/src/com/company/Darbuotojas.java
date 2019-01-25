@@ -6,6 +6,7 @@ public class Darbuotojas {
     private int valandos;
     private String darbuotojoVardas;
     private String pareigos;
+    private String p;
     public static int k=0;
 
     public void setPareigos(String pareigos) {
