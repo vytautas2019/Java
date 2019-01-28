@@ -30,6 +30,12 @@ public abstract class Person {
         this.name = name;
         this.gender = gender;
     }
+    public Person(String personalID, String name) {
+        this.personalID = personalID;
+        this.name = name;
+
+    }
+
 }
 
 

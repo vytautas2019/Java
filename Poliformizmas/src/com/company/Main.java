@@ -5,8 +5,8 @@ package com.company;
 //+2.Sukurkite abstrakčią klasę PrivatePerson kurį paveldėtų klasę Person, ir turėtų abstrakčius metodus, getEmploymentStatus();
 //+3.Sukurkite klases EmployedPerson ir UnemployedPerson kurios pavaldėtų PrivatePerson klasę ir įgyvendintų abstrakčius metodus
 //+4.Pridėkite PrivatePerson statinį metodą, kuris pagal nurodytus parametrus sukurtų EmployedPerson arba UnemployedPerson
-//Sukurkite klasę LegalPerson kuri paveldėtų Person klasę. Kviečiant metodą getGender() turėtų būti metama UnsupportedOperationException, kadangi juridiniai asmenys neturi lyties.
-//Sukurkite klasę PersonRepository, kuri turėtų šį statinį metodą: List<Person> getPersons(). Šis metodas turėtų grąžinti visų potipių Person objektų pavyzdžius.
+//+5.Sukurkite klasę LegalPerson kuri paveldėtų Person klasę. Kviečiant metodą getGender() turėtų būti metama UnsupportedOperationException, kadangi juridiniai asmenys neturi lyties.
+//6.Sukurkite klasę PersonRepository, kuri turėtų šį statinį metodą: List<Person> getPersons(). Šis metodas turėtų grąžinti visų potipių Person objektų pavyzdžius.
 //Sukurkite klasę PersonFacade kuri turėtų šiuos metodus: List<PrivatePerson > getPrivatePersons(), List<LegalPerson> getLegalPersons(). Šie metodai turėtų kviesti getPersons metodą, filtruoti gautus duomenis pagal reikalingus potipius ir grąžinti rezultatą.
 //Sukurkite sąsają Employee, kuri turėtų metodus int getSalary() ir String getEmployerName()
 //EmployedPerson turėtų įgyvendinti Employee sąsają
@@ -30,5 +30,9 @@ public class Main {
         System.out.println(person.getPersonalID()+"\t"+person.getName()+"\t"+person.getGender());
         UnemployedPerson person1=new UnemployedPerson("546","varde","female") ;
         System.out.println(person1.getPersonalID()+"\t"+person1.getName()+"\t"+person1.getGender());
+        LegalPerson person3=new LegalPerson("5478","imone");
+        System.out.println(person3.getPersonalID()+"\t"+person3.getName());
+        person3.getGender();
+
     }
 }
