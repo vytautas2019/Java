@@ -46,8 +46,7 @@ package com.company;
 public class Main {
 
     public static void main(String[] args) {
-        Device c1= new Device(true,11);
-        Device c2= new Device(true,22);
+
         Monitoring monitoring = new Monitoring();
 
         List<Device> devices = new ArrayList<>();
