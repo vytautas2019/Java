@@ -9,7 +9,7 @@ package com.company;
 public class Main {
 
     public static void main(String[] args) {
-	Print a =new Print();
-	a.print();
+        Print a = new Print();
+        a.print();
     }
 }
