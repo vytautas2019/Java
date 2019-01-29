@@ -18,13 +18,13 @@ public class Main {
 
         }
         for (int i = 0; i < vardai.length; i++) {
-            System.out.println(vardai[i] +"-" +vardai[i].length() +" raidziu-" + i +" elementas" );
+            System.out.println(vardai[i] + "-" + vardai[i].length() + " raidziu-" + i + " elementas");
 
         }
         String zvaigzdutes = "*";
         for (int i = 0; i < 10; i++) {
-            System.out.println( zvaigzdutes);
-            zvaigzdutes+="*";
+            System.out.println(zvaigzdutes);
+            zvaigzdutes += "*";
 
         }
     }
