@@ -5,9 +5,9 @@ package com.company;
 public class Main {
 
     public static void main(String[] args) {
-        A a =new A();
+        A a = new A();
 
-            a.divide();
+        a.divide();
 
 
     }
