@@ -33,6 +33,7 @@ public class Main {
         LegalPerson person3=new LegalPerson("5478","imone");
         System.out.println(person3.getPersonalID()+"\t"+person3.getName());
         person3.getGender();
+        System.out.println();
 
     }
 }
