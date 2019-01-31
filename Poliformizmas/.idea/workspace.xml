@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="03f0c79a-2b67-4c95-a077-a6f937a4fac5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../Su failais/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Su failais/src/com/company/Payments.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Su failais/src/com/company/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="03f0c79a-2b67-4c95-a077-a6f937a4fac5" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -47,7 +42,7 @@
     <session id="-467976873">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="3" />
+          <entry key="project.closed" value="4" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.4" value="3" />
           <entry key="project.opened" value="4" />
@@ -205,7 +200,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="9" />
     <option name="width" value="1918" />
     <option name="height" value="1000" />
