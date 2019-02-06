@@ -1,6 +1,7 @@
 package com.company;
 
 public class Item {
+
     private int id;
     private String name;
     private int price;
@@ -56,5 +57,16 @@ public class Item {
         ELECTRONICS,
         BOOK,
         CLOTHING
+    }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", quantity=" + quantity +
+                ", type=" + type +
+                '}';
     }
 }

@@ -15,7 +15,7 @@ public interface ShopService {
 
     List<Employee> getAllEmployees();
 
-    List<Employee> getEmployeesWithSalaryBetween(int low, int max);
+    List<Employee> getEmployeesWithSalaryBetween(int salaryLow, int salaryMax);
 
     List<Item> getItemsByType(Item.ItemType type);
 
@@ -23,9 +23,9 @@ public interface ShopService {
 
     Item getMostExpensiveItem();
 
-    Map<Item.ItemType, Item> getItemsGroupedByType();
+    Map<Item.ItemType, List<Item>> getItemsGroupedByType();
 
-    Item findItemBy(Predicate<Item> condition);
+    List<Item> findItemBy(Predicate<Item> condition);
 
     /**
      * sum for quantity * price of each item

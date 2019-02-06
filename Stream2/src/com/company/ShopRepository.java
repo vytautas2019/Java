@@ -39,7 +39,7 @@ public class ShopRepository {
         Item food1 = Item.foodItem(10, "Cheese", 5, 20);
         Item food2 = Item.foodItem(11, "Bread", 4, 30);
         Item food3 = Item.foodItem(12, "Vine", 7, 35);
-        Item food4 = Item.foodItem(13, "Ham", 3, 10);
+        Item food4 = Item.foodItem(13, "Ham", 2, 10);
         Item food5 = Item.foodItem(14, "Milk", 2, 15);
 
         Shop electronicsShop = new Shop(1, "Euronics");

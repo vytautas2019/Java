@@ -37,4 +37,14 @@ public class Shop {
     public void addItem(Item item) {
         merchandise.add(item);
     }
+
+    @Override
+    public String toString() {
+        return "Shop{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", merchandise=" + merchandise +
+                ", employees=" + employees +
+                '}';
+    }
 }
