@@ -39,4 +39,12 @@ public class MessageHandler {
                 + message.toString());
         return Optional.of(message);
     }
+
+    public List<MessageProcessor> getProcessors() {
+        return processors;
+    }
+
+    public List<Message> getFailedMessages() {
+        return failedMessages;
+    }
 }

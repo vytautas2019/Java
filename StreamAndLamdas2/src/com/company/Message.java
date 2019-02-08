@@ -8,14 +8,14 @@ public class Message {
     private long id;
     private String body;
     private LocalDateTime time;
-    private MessageType tipe;
+    private MessageType type;
     private List<Recipient> recipients;
 
     public Message(long id, String body, LocalDateTime time, MessageType tipe, List<Recipient> recipients) {
         this.id = id;
         this.body = body;
         this.time = time;
-        this.tipe = tipe;
+        this.type = tipe;
         this.recipients = recipients;
     }
 
@@ -31,8 +31,8 @@ public class Message {
         return time;
     }
 
-    public MessageType getTipe() {
-        return tipe;
+    public MessageType getType() {
+        return type;
     }
 
     public List<Recipient> getRecipients() {
@@ -45,7 +45,7 @@ public class Message {
                 "id=" + id +
                 ", body='" + body + '\'' +
                 ", time=" + time +
-                ", tipe=" + tipe +
+                ", tipe=" + type +
                 '}';
     }
 }
