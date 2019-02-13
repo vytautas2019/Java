@@ -22,7 +22,6 @@ public class Main {
 
         System.out.println(paymentFile.getPaymentID());
         System.out.println(paymentFile.getAmount());
-
         System.out.println(paymentFile.getSender());
         System.out.println(paymentFile.getReceiver());
 
