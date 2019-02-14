@@ -1,0 +1,5 @@
+<root>
+    <item name='java.util.Collection java.util.stream.Stream&lt;E&gt; stream()'>
+        <annotation name='java.lang.Deprecated'/>
+    </item>
+</root>
