@@ -1,8 +1,9 @@
 package lt.v;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Irasas {
+public class Irasas extends Biudzetas {
     private LocalDate time;
     private int id;
     private double suma;
@@ -10,7 +11,24 @@ public class Irasas {
     private String kategorija;
     static int idSet = 0;
 
-    public Irasas() {
+    public Irasas(){
+        kategorijos.add("Visi irasai");
+        kategorijos.add("Iraso redagavimas");
+        kategorijos.add("Iraso trynimas");
+        kategorijos.add("Irasai pagal datas");
+        kategorijos.add("Irasai pagal pajamas");
+        kategorijos.add("Irasai pagal islaidas");
+
+
+        sumos.add(0.);
+        sumos.add(0.);
+        sumos.add(0.);
+        sumos.add(0.);
+        sumos.add(0.);
+        sumos.add(0.);
+
+
+        suma = 0;
     }
 
     public Irasas(double suma, String lesuTipas, String kategorija) {
@@ -55,6 +73,12 @@ public class Irasas {
                 ", kategorija='" + kategorija + '\'' +
                 '}';
     }
+    @Override
+    public void spausdintiDetaliaInformacija() {
+        System.out.println("Irasai: ");
+        super.spausdintiDetaliaInformacija();
+    }
+
 
 
 }

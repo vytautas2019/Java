@@ -1,14 +1,15 @@
 package lt.v;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Biudzetas {
+public class Biudzetas implements Serializable {
 
     protected double suma;
     protected ArrayList<String> kategorijos = new ArrayList<>();
     protected ArrayList<Double> sumos = new ArrayList<>();
-    public static List<Irasas> irasai =new ArrayList<>();
+    protected List<Irasas> irasai =new ArrayList<>();
 
     public ArrayList<String> getKategorijos() {
         return kategorijos;
@@ -18,7 +19,7 @@ public class Biudzetas {
         return sumos;
     }
 
-    public static List<Irasas> getIrasai() {
+    public List<Irasas> getIrasai() {
         return irasai;
     }
 
@@ -51,4 +52,6 @@ public class Biudzetas {
     public String getKategorijosreiksme(int index){
         return  this.kategorijos.get(index);
     }
+
+
 }
