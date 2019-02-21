@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -17,10 +18,10 @@ public class Main {
         Biudzetas biudzetas= new Biudzetas();
         Irasas irasas=new Irasas();
 
-//        FileInputStream fileInputStream = new FileInputStream("Records.txt");
-//        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-//        biudzetas.irasai = (Irasas) objectInputStream.readObject();
-//        objectInputStream.close();
+        FileInputStream fileInputStream = new FileInputStream("Records.json");
+        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+        biudzetas.irasai = (List<Irasas>) objectInputStream.readObject();
+        objectInputStream.close();
 
 
 
