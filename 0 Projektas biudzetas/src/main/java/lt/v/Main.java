@@ -1,11 +1,12 @@
 package lt.v;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
+import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -18,10 +19,71 @@ public class Main {
         Biudzetas biudzetas= new Biudzetas();
         Irasas irasas=new Irasas();
 
-        FileInputStream fileInputStream = new FileInputStream("Records.json");
-        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-        biudzetas.irasai = (List<Irasas>) objectInputStream.readObject();
-        objectInputStream.close();
+        ObjectMapper mapper1 = new ObjectMapper();
+        File file1 = new File("C:\\Users\\VytautasB\\Desktop\\JP\\Java\\0 Projektas biudzetas\\Records.json");
+        biudzetas.irasai = mapper1.readValue(file1, new TypeReference<List<Irasas>>(){});
+        System.out.println(biudzetas.getIrasai());
+
+        Irasas maxId = biudzetas.irasai.stream().max(Comparator.comparing(Irasas::getId)).get();
+        System.out.println(maxId.getId());
+        Irasas.setIdSet(maxId.getId());
+
+
+
+
+        for (Irasas o:biudzetas.irasai) {
+            if(o.getLesuTipas().equals("Pajamos") ){
+
+                int index = 0;
+                switch (o.getKategorija()) {
+                    case "Atlyginimas":  index = 0;
+                        break;
+                    case "NT Nuoma":  index = 1;
+                        break;
+                    case "Stipendija":  index = 2;
+                        break;
+                    case "Ismoka":  index = 3;
+
+                        break;
+                    case "Investicijos":  index = 4;
+                        break;
+                    case "Dovana":  index = 5;
+                        break;
+                    case "Palikimas":  index = 6;
+                        break;
+                    case "Kita":  index = 7;
+                        break;
+
+                }
+                pajamos.setKategorijosSuma(index,o.getSuma());
+
+            }else {
+                int index = 0;
+                switch (o.getKategorija()) {
+                    case "Parduotuves":  index = 0;
+                        break;
+                    case "Lizingas":  index = 1;
+                        break;
+                    case "Bustas":  index = 2;
+                        break;
+                    case "Mokslai":  index = 3;
+
+                        break;
+                    case "Pramogos":  index = 4;
+                        break;
+                    case "Automobilis":  index = 5;
+                        break;
+                    case "Sodyba":  index = 6;
+                        break;
+                    case "Sveikata":  index = 7;
+                        break;
+                    case "Kita":  index = 7;
+                        break;
+                }
+                islaidos.setKategorijosSuma(index,o.getSuma());
+            }
+
+            }
 
 
 
@@ -30,7 +92,7 @@ public class Main {
 
         while(true){
             spausdintiMeniu();
-            System.out.println(biudzetas.getIrasai());
+
 
 
             Scanner scanner = new Scanner(System.in);
@@ -45,8 +107,7 @@ public class Main {
                         System.out.println("Iveskite suma: ");
                         double choice3=scanner.nextDouble();
                         pajamos.setKategorijosSuma(choice2-1,choice3);
-                        String x=pajamos.getKategorijosreiksme(choice2-1);
-                        biudzetas.irasai.add(new Irasas(choice3,"Pajamos",x) );
+                        biudzetas.irasai.add(new Irasas(choice3,"Pajamos",pajamos.getKategorijosreiksme(choice2-1)));
                         pajamos.spausdintiKategorijas();
                         choice2 = scanner.nextInt();
                     }
@@ -59,14 +120,14 @@ public class Main {
                         System.out.println("Iveskite suma: ");
                         double choice3=scanner.nextDouble();
                         islaidos.setKategorijosSuma(choice2-1,choice3);
-                        String x=islaidos.getKategorijosreiksme(choice2-1);
-                        biudzetas.irasai.add(new Irasas(choice3,"Islaidos",x) );
+                        biudzetas.irasai.add(new Irasas(choice3,"Islaidos",islaidos.getKategorijosreiksme(choice2-1)) );
                         islaidos.spausdintiKategorijas();
                         choice2 = scanner.nextInt();
                     }
                     break;
                 case 3:
                     irasas.spausdintiKategorijas();
+
                     pajamos.spausdintiDetaliaInformacija();
                     System.out.println("---------------------");
                     islaidos.spausdintiDetaliaInformacija();
@@ -87,12 +148,14 @@ public class Main {
     }
     public static void spausdintiMeniu(){
         System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
-        System.out.println("1. Iveskite pajamu informacija");
-        System.out.println("2. Iveskite islaidu informacija");
-        System.out.println("3. Irasai ir ju redagavimas");
-        System.out.println("4. Baigti darba");
-        System.out.println("Iveskite skaiciu is meniu...");
-        System.out.println();
+        System.out.println("| 1. Iveskite pajamu informacija    |");
+        System.out.println("| 2. Iveskite islaidu informacija   |");
+        System.out.println("| 3. Irasai ir ju redagavimas       |");
+        System.out.println("| 4. Baigti darba                   |");
+        System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+        System.out.println("|    Iveskite skaiciu is meniu...   |");
+        System.out.println("-------------------------------------");
+
 
     }
 

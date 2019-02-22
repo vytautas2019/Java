@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Biudzetas implements Serializable {
+public class Biudzetas {
 
     protected double suma;
     protected ArrayList<String> kategorijos = new ArrayList<>();
@@ -23,11 +23,28 @@ public class Biudzetas implements Serializable {
         return irasai;
     }
 
+    public void setSuma(double suma) {
+        this.suma = suma;
+    }
 
+    public void setKategorijos(ArrayList<String> kategorijos) {
+        this.kategorijos = kategorijos;
+    }
+
+    public void setSumos(ArrayList<Double> sumos) {
+        this.sumos = sumos;
+    }
+
+    public void setIrasai(List<Irasas> irasai) {
+        this.irasai = irasai;
+    }
 
 
     public double getSuma() {
         return suma;
+    }
+
+    public Biudzetas() {
     }
 
     public void spausdintiKategorijas(){
@@ -52,6 +69,7 @@ public class Biudzetas implements Serializable {
     public String getKategorijosreiksme(int index){
         return  this.kategorijos.get(index);
     }
+
 
 
 }
