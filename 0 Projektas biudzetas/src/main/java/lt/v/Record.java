@@ -22,7 +22,7 @@ public class Record extends Balance {
         categories.add("Records by dates");
         categories.add("Records by income");
         categories.add("Records by costs");
-        categories.add("Other");
+        categories.add("All records");
 
 
         amounts.add(0.);
@@ -71,7 +71,7 @@ public class Record extends Balance {
 
     @Override
     public String toString() {
-        return "Record{" +
+        return "Record "+id+"{" +
                 "time=" + time +
                 ", id=" + id +
                 ", amount=" + amount +

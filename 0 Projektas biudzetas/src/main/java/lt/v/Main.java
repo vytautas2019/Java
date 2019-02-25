@@ -5,10 +5,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Scanner;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Main {
 
@@ -27,13 +28,6 @@ public class Main {
 
         Record maxId = balance.records.stream().max(Comparator.comparing(Record::getId)).get();
         Record.setIdSet(maxId.getId());
-        for (Object o:balance.records) {
-            System.out.println(o);
-
-        }
-
-
-
 
         for (Record o : balance.records) {
             if (o.getFundsType().equals("Income")) {
@@ -113,8 +107,8 @@ public class Main {
                 case 1:
                     income.printCategories();
                     int choice2 = scanner.nextInt();
-                    while (choice2 > 0 && choice2 < income.categories.size()+1) {
-                        System.out.println("Input "+income.getCategoriesValue(choice2-1)+ " amount: ");
+                    while (choice2 > 0 && choice2 < income.categories.size() + 1) {
+                        System.out.println("Input " + income.getCategoriesValue(choice2 - 1) + " amount: ");
                         double choice3 = scanner.nextDouble();
                         income.setCategoriesAmount(choice2 - 1, choice3);
                         balance.records.add(new Record(choice3, "Income", income.getCategoriesValue(choice2 - 1)));
@@ -126,8 +120,8 @@ public class Main {
                 case 2:
                     costs.printCategories();
                     choice2 = scanner.nextInt();
-                    while (choice2 > 0 && choice2 < costs.categories.size()+1) {
-                        System.out.println("Input "+costs.getCategoriesValue(choice2-1)+ " amount: ");
+                    while (choice2 > 0 && choice2 < costs.categories.size() + 1) {
+                        System.out.println("Input " + costs.getCategoriesValue(choice2 - 1) + " amount: ");
                         double choice3 = scanner.nextDouble();
                         costs.setCategoriesAmount(choice2 - 1, choice3);
                         balance.records.add(new Record(choice3, "Costs", costs.getCategoriesValue(choice2 - 1)));
@@ -138,29 +132,104 @@ public class Main {
                 case 3:
                     record.printCategories();
                     int choice32 = scanner.nextInt();
-                    while (choice32 > 0 && choice32 < record.categories.size()) {
+                    while (choice32 > 0 && choice32 < record.categories.size() + 1) {
 
                         switch (choice32) {
                             case 1:
-                                System.out.println(String.format("x%-40sx","xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"));
-                                System.out.println(String.format("|%-40s|","    Balance"));
-                                System.out.println(String.format("-%-40s-","----------------------------------------"));
-//                                income.printInfo();
-//                                System.out.println(String.format("-%-40s-","----------------------------------------"));
-//                                costs.printInfo();
-//                                System.out.println(String.format("-%-40s-","----------------------------------------"));
-                                System.out.println(String.format("|%-40s|",("    Income total: " + income.getAmount() + Currency.EUR)));
-                                System.out.println(String.format("|%-40s|",("    Costs total: " + costs.getAmount() + Currency.EUR)));
-                                System.out.println(String.format("-%-40s-","----------------------------------------"));
-                                System.out.println(String.format("|%-40s|",("    Balance total:" + (income.getAmount() - costs.getAmount()) + Currency.EUR )));
-                                System.out.println(String.format("-%-40s-","----------------------------------------"));
+                                System.out.println(String.format("x%-200sx", "x".repeat(200)));
+                                System.out.println(String.format("|%-200s|", "    Balance"));
+                                System.out.println(String.format("-%-200s-", "-".repeat(200)));
+                                System.out.println(String.format("|%-200s|", ("    Income total: " + income.getAmount() + Currency.EUR)));
+                                System.out.println(String.format("|%-200s|", ("    Costs total: " + costs.getAmount() + Currency.EUR)));
+                                System.out.println(String.format("-%-200s-", "-".repeat(200)));
+                                System.out.println(String.format("|%-200s|", ("    Balance total:" + (income.getAmount() - costs.getAmount()) + Currency.EUR)));
+                                System.out.println(String.format("-%-200s-", "-".repeat(200)));
+                                break;
+                            case 2:
+                                System.out.println(String.format("x%-200sx", "x".repeat(200)));
+                                System.out.println(String.format("|%-200s|", "    Edit record"));
+                                System.out.println(String.format("x%-200sx", "x".repeat(200)));
+
+
+                                break;
+                            case 3:
+                                System.out.println(String.format("x%-200sx", "x".repeat(200)));
+                                System.out.println(String.format("|%-200s|", "    Erase record"));
+                                System.out.println(String.format("x%-200sx", "x".repeat(200)));
+
+
+                                break;
+                            case 4:
+                                System.out.println(String.format("x%-200sx", "x".repeat(200)));
+                                System.out.println(String.format("|%-200s|", "    Record by dates"));
+                                System.out.println(String.format("x%-200sx", "x".repeat(200)));
+                                System.out.println("Input start date");
+                                String dateStart = scanner.next();
+                                LocalDate localDate=LocalDate.parse(dateStart);
+                                LocalDateTime d1 =LocalDateTime.of(localDate, LocalTime.MIN);
+                                System.out.println("Input last date");
+                                String date2 = scanner.next();
+                                LocalDate localDate2=LocalDate.parse(date2);
+                                LocalDateTime d2 =LocalDateTime.of(localDate2, LocalTime.MIN);
+
+
+                                Map<String, Double> categoryAmmountsByDates = balance.records.stream()
+                                        .filter(r-> r.getFundsType().equals("Income"))
+                                        .filter(date->date.getTime().isAfter(d1)&& date.getTime().isBefore(d2))
+                                        .collect(Collectors.groupingBy(Record::getCategory, Collectors.summingDouble(Record::getAmount)));
+                                List<Map.Entry<String, Double>> sortedCategories1 = categoryAmmountsByDates.entrySet().stream()
+                                        .sorted((v1, v2) -> v2.getValue() > v1.getValue() ? 1 : v2.getValue().equals(v1.getValue()) ? 0 : -1)
+                                        .collect(Collectors.toList());
+                                System.out.println(String.format("|%-200s|", ("    "+sortedCategories1)));
+
+
+                                break;
+                            case 5:
+                                System.out.println(String.format("x%-200sx", "x".repeat(200)));
+                                System.out.println(String.format("|%-200s|", "    Record by income"));
+                                System.out.println(String.format("x%-200sx", "x".repeat(200)));
+                                Map<String, Double> categoryAmmountsIncome = balance.records.stream()
+                                        .filter(r-> r.getFundsType().equals("Income"))
+                                        .collect(Collectors.groupingBy(Record::getCategory, Collectors.summingDouble(Record::getAmount)));
+                                List<Map.Entry<String, Double>> sortedCategories = categoryAmmountsIncome.entrySet().stream()
+                                        .sorted((v1, v2) -> v2.getValue() > v1.getValue() ? 1 : v2.getValue().equals(v1.getValue()) ? 0 : -1)
+                                        .collect(Collectors.toList());
+                                System.out.println(String.format("|%-200s|", ("    "+sortedCategories)));
+
+
+                                break;
+                            case 6:
+                                System.out.println(String.format("x%-200sx", "x".repeat(200)));
+                                System.out.println(String.format("|%-200s|", "    Record by costs"));
+                                System.out.println(String.format("x%-200sx", "x".repeat(200)));
+                                Map<String, Double> categoryAmmountsCosts = balance.records.stream()
+                                        .filter(r-> r.getFundsType().equals("Costs"))
+                                        .collect(Collectors.groupingBy(Record::getCategory, Collectors.summingDouble(Record::getAmount)));
+                                List<Map.Entry<String, Double>> sortedCategoriesCosts = categoryAmmountsCosts.entrySet().stream()
+                                        .sorted((v1, v2) -> v2.getValue() > v1.getValue() ? 1 : v2.getValue().equals(v1.getValue()) ? 0 : -1)
+                                        .collect(Collectors.toList());
+                                System.out.println(String.format("|%-200s|", ("    "+sortedCategoriesCosts)));
+
+
+                                break;
+                            case 7:
+                                System.out.println(String.format("x%-200sx", "x".repeat(200)));
+                                System.out.println(String.format("|%-200s|", "    All records"));
+                                System.out.println(String.format("x%-200sx", "x".repeat(200)));
+                                for (Object o : balance.records) {
+                                    System.out.println(String.format("|%-200s|", ("   " + o)));
+
+                                }
+                                System.out.println(String.format("x%-200sx", "x".repeat(200)));
+
+
                                 break;
                         }
                         record.printCategories();
                         choice32 = scanner.nextInt();
                     }
                     break;
-//
+
                 case 4:
                     ObjectMapper mapper = new ObjectMapper();
                     File file = new File("Records.json");
@@ -172,15 +241,14 @@ public class Main {
     }
 
     public static void spausdintiMeniu() {
-        System.out.println(String.format("x%-40sx","xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"));
-        System.out.println(String.format("|%-40s|","    1. Input income info"));
-        System.out.println(String.format("|%-40s|","    2. Input costs info"));
-        System.out.println(String.format("|%-40s|","    3. Records info"));
-        System.out.println(String.format("|%-40s|","    4. Exit"));
-        System.out.println(String.format("x%-40sx","xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"));
-        System.out.println(String.format("|%-40s|","    Input number from menu..."));
-        System.out.println(String.format("x%-40sx","xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"));
-
+        System.out.println(String.format("x%-200sx", "x".repeat(200)));
+        System.out.println(String.format("|%-200s|", "    1. Input income info"));
+        System.out.println(String.format("|%-200s|", "    2. Input costs info"));
+        System.out.println(String.format("|%-200s|", "    3. Records info"));
+        System.out.println(String.format("|%-200s|", "    4. Exit"));
+        System.out.println(String.format("x%-200sx", "x".repeat(200)));
+        System.out.println(String.format("|%-200s|", "    Input number from menu..."));
+        System.out.println(String.format("x%-200sx", "x".repeat(200)));
 
 
     }
