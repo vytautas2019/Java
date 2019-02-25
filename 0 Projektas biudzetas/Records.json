@@ -1,0 +1,182 @@
+[
+  {
+    "amount": 1000.0,
+    "categories": [],
+    "amounts": [],
+    "records": [],
+    "time": "2019-02-25T19:40:35.9399218",
+    "id": 1,
+    "fundsType": "Income",
+    "category": "Salary"
+  },
+  {
+    "amount": 200.0,
+    "categories": [],
+    "amounts": [],
+    "records": [],
+    "time": "2019-02-25T19:40:44.6472411",
+    "id": 2,
+    "fundsType": "Income",
+    "category": "Rent"
+  },
+  {
+    "amount": 1.0,
+    "categories": [],
+    "amounts": [],
+    "records": [],
+    "time": "2019-02-25T19:40:52.0794186",
+    "id": 3,
+    "fundsType": "Income",
+    "category": "Grant"
+  },
+  {
+    "amount": 400.0,
+    "categories": [],
+    "amounts": [],
+    "records": [],
+    "time": "2019-02-25T19:43:07.2246719",
+    "id": 4,
+    "fundsType": "Income",
+    "category": "Allowance"
+  },
+  {
+    "amount": 500.0,
+    "categories": [],
+    "amounts": [],
+    "records": [],
+    "time": "2019-02-25T19:43:12.9919455",
+    "id": 5,
+    "fundsType": "Income",
+    "category": "Investments"
+  },
+  {
+    "amount": 600.0,
+    "categories": [],
+    "amounts": [],
+    "records": [],
+    "time": "2019-02-25T19:43:17.7756122",
+    "id": 6,
+    "fundsType": "Income",
+    "category": "Gift"
+  },
+  {
+    "amount": 700.0,
+    "categories": [],
+    "amounts": [],
+    "records": [],
+    "time": "2019-02-25T19:43:28.4713807",
+    "id": 7,
+    "fundsType": "Income",
+    "category": "Legacy"
+  },
+  {
+    "amount": 800.0,
+    "categories": [],
+    "amounts": [],
+    "records": [],
+    "time": "2019-02-25T19:43:35.4949355",
+    "id": 8,
+    "fundsType": "Income",
+    "category": "Other"
+  },
+  {
+    "amount": 100.0,
+    "categories": [],
+    "amounts": [],
+    "records": [],
+    "time": "2019-02-25T19:43:54.1914464",
+    "id": 9,
+    "fundsType": "Costs",
+    "category": "Shops"
+  },
+  {
+    "amount": 200.0,
+    "categories": [],
+    "amounts": [],
+    "records": [],
+    "time": "2019-02-25T19:43:58.2473647",
+    "id": 10,
+    "fundsType": "Costs",
+    "category": "Leasing"
+  },
+  {
+    "amount": 300.0,
+    "categories": [],
+    "amounts": [],
+    "records": [],
+    "time": "2019-02-25T19:44:02.3432579",
+    "id": 11,
+    "fundsType": "Costs",
+    "category": "House"
+  },
+  {
+    "amount": 400.0,
+    "categories": [],
+    "amounts": [],
+    "records": [],
+    "time": "2019-02-25T19:44:09.4069174",
+    "id": 12,
+    "fundsType": "Costs",
+    "category": "Studies"
+  },
+  {
+    "amount": 500.0,
+    "categories": [],
+    "amounts": [],
+    "records": [],
+    "time": "2019-02-25T19:44:16.1353607",
+    "id": 13,
+    "fundsType": "Costs",
+    "category": "Fun"
+  },
+  {
+    "amount": 600.0,
+    "categories": [],
+    "amounts": [],
+    "records": [],
+    "time": "2019-02-25T19:44:21.42236",
+    "id": 14,
+    "fundsType": "Costs",
+    "category": "Car"
+  },
+  {
+    "amount": 700.0,
+    "categories": [],
+    "amounts": [],
+    "records": [],
+    "time": "2019-02-25T19:44:27.0081518",
+    "id": 15,
+    "fundsType": "Costs",
+    "category": "Travel"
+  },
+  {
+    "amount": 800.0,
+    "categories": [],
+    "amounts": [],
+    "records": [],
+    "time": "2019-02-25T19:44:34.3515991",
+    "id": 16,
+    "fundsType": "Costs",
+    "category": "Health"
+  },
+  {
+    "amount": 900.0,
+    "categories": [],
+    "amounts": [],
+    "records": [],
+    "time": "2019-02-25T19:44:40.9274735",
+    "id": 17,
+    "fundsType": "Costs",
+    "category": "Other"
+  },
+  {
+    "amount": 2000.0,
+    "categories": [],
+    "amounts": [],
+    "records": [],
+    "time": "2019-02-25T19:45:41.2429633",
+    "id": 18,
+    "fundsType": "Income",
+    "category": "Salary"
+  }
+]

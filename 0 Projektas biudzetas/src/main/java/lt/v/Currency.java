@@ -1,6 +1,5 @@
 package lt.v;
 
-public enum Valiuta {
+public enum Currency {
     EUR,USD,CAD,GBP,NOK,CHF
 }
-
