@@ -149,6 +149,22 @@ public class Main {
                                 System.out.println(String.format("x%-200sx", "x".repeat(200)));
                                 System.out.println(String.format("|%-200s|", "    Edit record"));
                                 System.out.println(String.format("x%-200sx", "x".repeat(200)));
+                                for (Object o : balance.records) {
+                                    System.out.println(String.format("|%-200s|", ("   " + o)));
+
+                                }
+                                System.out.println(String.format("|%-200s|", "    Input number of edited record..."));
+                                int choice21 = scanner.nextInt();
+                                System.out.println(String.format("|%-200s|", "    Input amount of edited record..."));
+                                int choice22 = scanner.nextInt();
+                                balance.records.get(choice21-1).setAmount(choice22);
+                                System.out.println(String.format("x%-200sx", "x".repeat(200)));
+                                for (Object o : balance.records) {
+                                    System.out.println(String.format("|%-200s|", ("   " + o)));
+                                }
+
+                                balance.saveToFileJson();
+
 
 
                                 break;
@@ -156,6 +172,20 @@ public class Main {
                                 System.out.println(String.format("x%-200sx", "x".repeat(200)));
                                 System.out.println(String.format("|%-200s|", "    Erase record"));
                                 System.out.println(String.format("x%-200sx", "x".repeat(200)));
+                                for (Object o : balance.records) {
+                                    System.out.println(String.format("|%-200s|", ("   " + o)));
+
+                                }
+                                System.out.println(String.format("|%-200s|", "    Input number of edited record..."));
+                                int choice331 = scanner.nextInt();
+                                balance.records.get(choice331-1).setAmount(0);
+                                for (Object o : balance.records) {
+                                    System.out.println(String.format("|%-200s|", ("   " + o)));
+
+                                }
+                                balance.saveToFileJson();
+
+
 
 
                                 break;
@@ -163,11 +193,12 @@ public class Main {
                                 System.out.println(String.format("x%-200sx", "x".repeat(200)));
                                 System.out.println(String.format("|%-200s|", "    Record by dates"));
                                 System.out.println(String.format("x%-200sx", "x".repeat(200)));
-                                System.out.println("Input start date");
+                                System.out.println(String.format("|%-200s|", "    Input start date"));
                                 String dateStart = scanner.next();
                                 LocalDate localDate=LocalDate.parse(dateStart);
                                 LocalDateTime d1 =LocalDateTime.of(localDate, LocalTime.MIN);
-                                System.out.println("Input last date");
+
+                                System.out.println(String.format("|%-200s|", "    Input end date"));
                                 String date2 = scanner.next();
                                 LocalDate localDate2=LocalDate.parse(date2);
                                 LocalDateTime d2 =LocalDateTime.of(localDate2, LocalTime.MIN);
@@ -180,7 +211,16 @@ public class Main {
                                 List<Map.Entry<String, Double>> sortedCategories1 = categoryAmmountsByDates.entrySet().stream()
                                         .sorted((v1, v2) -> v2.getValue() > v1.getValue() ? 1 : v2.getValue().equals(v1.getValue()) ? 0 : -1)
                                         .collect(Collectors.toList());
-                                System.out.println(String.format("|%-200s|", ("    "+sortedCategories1)));
+                                System.out.println(String.format("|%-200s|", ("    Income summary: "+sortedCategories1)));
+
+                                Map<String, Double> categoryAmmountsByDates1 = balance.records.stream()
+                                        .filter(r-> r.getFundsType().equals("Costs"))
+                                        .filter(date->date.getTime().isAfter(d1)&& date.getTime().isBefore(d2))
+                                        .collect(Collectors.groupingBy(Record::getCategory, Collectors.summingDouble(Record::getAmount)));
+                                List<Map.Entry<String, Double>> sortedCategories2 = categoryAmmountsByDates1.entrySet().stream()
+                                        .sorted((v1, v2) -> v2.getValue() > v1.getValue() ? 1 : v2.getValue().equals(v1.getValue()) ? 0 : -1)
+                                        .collect(Collectors.toList());
+                                System.out.println(String.format("|%-200s|", ("    Costs summary: "+sortedCategories2)));
 
 
                                 break;
@@ -231,9 +271,10 @@ public class Main {
                     break;
 
                 case 4:
-                    ObjectMapper mapper = new ObjectMapper();
-                    File file = new File("Records.json");
-                    mapper.writeValue(file, balance.getRecords());
+                    balance.saveToFileJson();
+//                    ObjectMapper mapper = new ObjectMapper();
+//                    File file = new File("Records.json");
+//                    mapper.writeValue(file, balance.getRecords());
 
                     System.exit(0);
             }
@@ -252,5 +293,6 @@ public class Main {
 
 
     }
+
 
 }

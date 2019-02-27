@@ -1,5 +1,9 @@
 package lt.v;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +22,7 @@ public class Balance {
         return amounts;
     }
 
-    public List<Record> getRecords() {
+    public  List<Record> getRecords() {
         return records;
     }
 
@@ -71,6 +75,15 @@ public class Balance {
     public String getCategoriesValue(int index) {
         return this.categories.get(index);
     }
+
+    public  void saveToFileJson() throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        File file = new File("Records.json");
+        mapper.writeValue(file,getRecords());
+    }
+
 }
+
+
 
 

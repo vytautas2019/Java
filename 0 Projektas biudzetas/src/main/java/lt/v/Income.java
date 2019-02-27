@@ -1,0 +1,35 @@
+package lt.v;
+
+public class Income extends Balance {
+
+    public Income(){
+        categories.add("Salary");
+        categories.add("Rent");
+        categories.add("Grant");
+        categories.add("Allowance");
+        categories.add("Investments");
+        categories.add("Gift");
+        categories.add("Legacy");
+        categories.add("Other");
+
+        amounts.add(0.00);
+        amounts.add(0.00);
+        amounts.add(0.00);
+        amounts.add(0.00);
+        amounts.add(0.00);
+        amounts.add(0.00);
+        amounts.add(0.00);
+        amounts.add(0.00);
+
+
+        amount = 0;
+    }
+
+    @Override
+    public void printInfo() {
+        System.out.println(String.format("|%-40s|","    Income"));
+        System.out.println(String.format("|%-40s|",""));
+        super.printInfo();
+    }
+
+}
