@@ -1,6 +1,9 @@
 package com.company;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
+import java.util.stream.Stream;
 
 public class Main {
 
@@ -17,7 +20,12 @@ public class Main {
         spygliuociuMiskas.add(new Pusis());
         spygliuociuMiskas.add(new Kadagys());
         Print.printSpygliuociaiMedziai(spygliuociuMiskas);
-
+        String persons = Stream.of("Java")
+                .findFirst()
+                .orElse("Spring");
+        System.out.println(persons);
+        LocalDate x= LocalDate.parse("2019-02-28").minus(1, ChronoUnit.MILLENNIA);
+        System.out.println(x);
 
     }
 }

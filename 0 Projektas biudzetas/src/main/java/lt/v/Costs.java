@@ -27,8 +27,10 @@ public class Costs extends Balance {
 
     @Override
     public void printInfo() {
-        System.out.println(String.format("|%-40s|","    Costs"));
-        System.out.println(String.format("|%-40s|",""));
+        System.out.println(String.format("|%-200s|","    Costs"));
+        System.out.println(String.format("|%-200s|",""));
         super.printInfo();
     }
+
+
 }

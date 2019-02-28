@@ -81,7 +81,7 @@ public class Record extends Balance {
     }
     @Override
     public void printInfo() {
-        System.out.println(String.format("|%-40s|","    Records"));
+        System.out.println(String.format("|%-200s|","    Records"));
         super.printInfo();
     }
 

@@ -1,5 +1,7 @@
 package lt.v;
 
+import java.util.ArrayList;
+
 public class Income extends Balance {
 
     public Income(){
@@ -25,11 +27,22 @@ public class Income extends Balance {
         amount = 0;
     }
 
+
     @Override
     public void printInfo() {
-        System.out.println(String.format("|%-40s|","    Income"));
-        System.out.println(String.format("|%-40s|",""));
+        System.out.println(String.format("|%-200s|","    Income"));
+        System.out.println(String.format("|%-200s|",""));
         super.printInfo();
     }
+    @Override
+    public void setCategoriesAmount(int index, double value) {
+        this.amounts.set(index, value);
+        amount += value;
+    }
+    public void setCategories(ArrayList<String> categories) {
+        this.categories = categories;
+    }
+
+
 
 }
