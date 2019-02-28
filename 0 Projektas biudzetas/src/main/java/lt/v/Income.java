@@ -34,11 +34,8 @@ public class Income extends Balance {
         System.out.println(String.format("|%-200s|",""));
         super.printInfo();
     }
-    @Override
-    public void setCategoriesAmount(int index, double value) {
-        this.amounts.set(index, value);
-        amount += value;
-    }
+
+
     public void setCategories(ArrayList<String> categories) {
         this.categories = categories;
     }

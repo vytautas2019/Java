@@ -155,7 +155,7 @@ public class Main {
                                         System.out.println(String.format("|%-200s|", "    Input number of edited record..."));
                                         int choice321 = scanner.nextInt();
                                         System.out.println(String.format("|%-200s|", "    Input amount of edited record..."));
-                                        int choice322 = scanner.nextInt();
+                                        double choice322 = scanner.nextDouble();
                                         balance.records.get(choice321 - 1).setAmount(choice322);
                                         System.out.println(String.format("x%-200sx", "x".repeat(200)));
                                         balance.printAllRecords();
